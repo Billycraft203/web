@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>微掌柜 - 打单发货系统</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- 左侧导航栏 -->
+    <nav class="sidebar">
+        <div class="logo">
+            <div class="logo-icon">W</div>
+            <div class="logo-text">微掌柜</div>
+        </div>
+        
+        <ul class="nav-menu">
+            <li class="nav-item active">
+                <span class="nav-icon">🏠</span>
+                <span class="nav-text">首页</span>
+            </li>
+            <li class="nav-item" onclick="window.location.href='about.html'">
+                <span class="nav-icon">👤</span>
+                <span class="nav-text">关于</span>
+            </li>
+        </ul>
+    </nav>
+
+    <!-- 主内容区域 -->
+    <main class="main-content">
+        <!-- 数据统计标题 -->
+        <div class="section-title">数据统计</div>
+
+        <!-- 时间切换和统计数据 -->
+        <div class="stats-section">
+            <div class="time-tabs">
+                <button class="time-tab active">今日</button>
+                <button class="time-tab">近7日</button>
+            </div>
+            
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-number">0</div>
+                    <div class="stat-label">未打印</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">0</div>
+                    <div class="stat-label">未发货</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">0</div>
+                    <div class="stat-label">预打印</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">0</div>
+                    <div class="stat-label">已打印</div>
+                </div>
+            </div>
+
+            <div class="time-tabs right-tabs">
+                <button class="time-tab active">近7日</button>
+            </div>
+
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-number">0</div>
+                    <div class="stat-label">运输中</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">0</div>
+                    <div class="stat-label">已签收</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">0</div>
+                    <div class="stat-label">已取消</div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- 近7日订单走势 -->
+        <div class="section-title">
+            近7日订单走势
+            <span class="time-range">时间|12/20-12/26</span>
+            <a href="#" class="view-detail">订单详情</a>
+        </div>
+
+        <div class="chart-container">
+            <canvas id="orderTrendChart"></canvas>
+        </div>
+
+        <!-- 常用功能 -->
+        <div class="section-title">常用功能</div>
+
+        <div class="function-grid">
+            <div class="function-item" onclick="openCreateOrderModal()">
+                <div class="function-icon" style="background: #4D9BFF;">📝</div>
+                <div class="function-text">创建订单</div>
+            </div>
+            <div class="function-item" onclick="openOrderListModal()">
+                <div class="function-icon" style="background: #4D9BFF;">📋</div>
+                <div class="function-text">订单列表</div>
+            </div>
+            <div class="function-item">
+                <div class="function-icon" style="background: #FF9448;">⚙️</div>
+                <div class="function-text">电商授权</div>
+            </div>
+            <div class="function-item">
+                <div class="function-icon" style="background: #5FC88F;">🧾</div>
+                <div class="function-text">电子面单</div>
+            </div>
+        </div>
+    </main>
+
+    <!-- 创建订单模态框 -->
+    <div id="createOrderModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>创建订单</h2>
+                <span class="close" onclick="closeCreateOrderModal()">&times;</span>
+            </div>
+            <div class="modal-body">
+                <form id="createOrderForm">
+                    <div class="form-group">
+                        <label for="orderNumber">订单号：</label>
+                        <input type="text" id="orderNumber" name="orderNumber" placeholder="自动生成或手动输入">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="customerName">收货人姓名：<span class="required">*</span></label>
+                        <input type="text" id="customerName" name="customerName" placeholder="请输入收货人姓名" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="customerPhone">联系电话：<span class="required">*</span></label>
+                        <input type="tel" id="customerPhone" name="customerPhone" placeholder="请输入联系电话" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="customerAddress">收货地址：<span class="required">*</span></label>
+                        <textarea id="customerAddress" name="customerAddress" rows="3" placeholder="请输入详细地址" required></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="productName">商品名称：<span class="required">*</span></label>
+                        <input type="text" id="productName" name="productName" placeholder="请输入商品名称" required>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="quantity">数量：<span class="required">*</span></label>
+                            <input type="number" id="quantity" name="quantity" placeholder="1" min="1" value="1" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="price">单价：<span class="required">*</span></label>
+                            <input type="number" id="price" name="price" placeholder="0.00" step="0.01" min="0" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="expressCompany">快递公司：</label>
+                        <select id="expressCompany" name="expressCompany">
+                            <option value="顺丰速运">顺丰速运</option>
+                            <option value="圆通速递">圆通速递</option>
+                            <option value="中通快递">中通快递</option>
+                            <option value="申通快递">申通快递</option>
+                            <option value="韵达快递">韵达快递</option>
+                            <option value="邮政EMS">邮政EMS</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="remark">备注：</label>
+                        <textarea id="remark" name="remark" rows="2" placeholder="订单备注信息"></textarea>
+                    </div>
+                    
+                    <div class="form-actions">
+                        <button type="button" class="btn btn-cancel" onclick="closeCreateOrderModal()">取消</button>
+                        <button type="submit" class="btn btn-submit">创建订单</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- 订单列表模态框 -->
+    <div id="orderListModal" class="modal">
+        <div class="modal-content modal-large">
+            <div class="modal-header">
+                <h2>订单列表</h2>
+                <span class="close" onclick="closeOrderListModal()">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div class="order-filter">
+                    <input type="text" id="orderSearchInput" placeholder="搜索订单号、收货人、电话..." class="search-input">
+                    <select id="orderStatusFilter" class="status-filter">
+                        <option value="all">全部状态</option>
+                        <option value="unpaid">未支付</option>
+                        <option value="unprinted">未打印</option>
+                        <option value="unshipped">未发货</option>
+                        <option value="shipped">运输中</option>
+                        <option value="completed">已完成</option>
+                        <option value="cancelled">已取消</option>
+                    </select>
+                    <button class="btn btn-filter" onclick="filterOrders()">筛选</button>
+                </div>
+                
+                <div class="order-table-container">
+                    <table class="order-table">
+                        <thead>
+                            <tr>
+                                <th>订单号</th>
+                                <th>收货人</th>
+                                <th>联系电话</th>
+                                <th>商品名称</th>
+                                <th>数量</th>
+                                <th>金额</th>
+                                <th>状态</th>
+                                <th>创建时间</th>
+                                <th>操作</th>
+                            </tr>
+                        </thead>
+                        <tbody id="orderTableBody">
+                            <!-- 订单数据将通过JS动态生成 -->
+                        </tbody>
+                    </table>
+                </div>
+                
+                <div class="no-data" id="noOrderData" style="display: none;">
+                    <div class="no-data-icon">📦</div>
+                    <div class="no-data-text">暂无订单数据</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/main.js"></script>
+    <script src="js/charts.js"></script>
+</body>
+</html>
