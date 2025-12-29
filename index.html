@@ -19,6 +19,22 @@
                 <span class="nav-icon">🏠</span>
                 <span class="nav-text">首页</span>
             </li>
+            <li class="nav-item" onclick="window.location.href='create-order.html'">
+                <span class="nav-icon">📝</span>
+                <span class="nav-text">创建订单</span>
+            </li>
+            <li class="nav-item" onclick="window.location.href='order-list.html'">
+                <span class="nav-icon">📋</span>
+                <span class="nav-text">订单列表</span>
+            </li>
+            <li class="nav-item" onclick="window.location.href='authorization.html'">
+                <span class="nav-icon">⚙️</span>
+                <span class="nav-text">电商授权</span>
+            </li>
+            <li class="nav-item" onclick="window.location.href='waybill.html'">
+                <span class="nav-icon">🧾</span>
+                <span class="nav-text">电子面单</span>
+            </li>
             <li class="nav-item" onclick="window.location.href='about.html'">
                 <span class="nav-icon">👤</span>
                 <span class="nav-text">关于</span>
@@ -40,20 +56,20 @@
             
             <div class="stats-grid">
                 <div class="stat-item">
-                    <div class="stat-number">0</div>
+                    <div class="stat-number" id="stat-unprinted">0</div>
                     <div class="stat-label">未打印</div>
                 </div>
                 <div class="stat-item">
-                    <div class="stat-number">0</div>
+                    <div class="stat-number" id="stat-unshipped">0</div>
                     <div class="stat-label">未发货</div>
                 </div>
                 <div class="stat-item">
-                    <div class="stat-number">0</div>
-                    <div class="stat-label">预打印</div>
+                    <div class="stat-number" id="stat-unpaid">0</div>
+                    <div class="stat-label">未支付</div>
                 </div>
                 <div class="stat-item">
-                    <div class="stat-number">0</div>
-                    <div class="stat-label">已打印</div>
+                    <div class="stat-number" id="stat-total">0</div>
+                    <div class="stat-label">总订单</div>
                 </div>
             </div>
 
@@ -63,15 +79,15 @@
 
             <div class="stats-grid">
                 <div class="stat-item">
-                    <div class="stat-number">0</div>
+                    <div class="stat-number" id="stat-shipped">0</div>
                     <div class="stat-label">运输中</div>
                 </div>
                 <div class="stat-item">
-                    <div class="stat-number">0</div>
-                    <div class="stat-label">已签收</div>
+                    <div class="stat-number" id="stat-completed">0</div>
+                    <div class="stat-label">已完成</div>
                 </div>
                 <div class="stat-item">
-                    <div class="stat-number">0</div>
+                    <div class="stat-number" id="stat-cancelled">0</div>
                     <div class="stat-label">已取消</div>
                 </div>
             </div>
@@ -82,33 +98,11 @@
         <div class="section-title">
             近7日订单走势
             <span class="time-range">时间|12/20-12/26</span>
-            <a href="#" class="view-detail">订单详情</a>
+            <a href="order-list.html" class="view-detail">订单详情</a>
         </div>
 
         <div class="chart-container">
             <canvas id="orderTrendChart"></canvas>
-        </div>
-
-        <!-- 常用功能 -->
-        <div class="section-title">常用功能</div>
-
-        <div class="function-grid">
-            <div class="function-item" onclick="openCreateOrderModal()">
-                <div class="function-icon" style="background: #4D9BFF;">📝</div>
-                <div class="function-text">创建订单</div>
-            </div>
-            <div class="function-item" onclick="openOrderListModal()">
-                <div class="function-icon" style="background: #4D9BFF;">📋</div>
-                <div class="function-text">订单列表</div>
-            </div>
-            <div class="function-item">
-                <div class="function-icon" style="background: #FF9448;">⚙️</div>
-                <div class="function-text">电商授权</div>
-            </div>
-            <div class="function-item">
-                <div class="function-icon" style="background: #5FC88F;">🧾</div>
-                <div class="function-text">电子面单</div>
-            </div>
         </div>
     </main>
 

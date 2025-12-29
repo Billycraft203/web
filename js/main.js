@@ -17,7 +17,84 @@ function init() {
     // 生成订单号
     generateOrderNumber();
     
+    // 初始化示例数据（仅用于演示，如果localStorage中没有数据）
+    initSampleData();
+    
+    // 更新统计数据
+    updateStats();
+    
     console.log('微掌柜系统初始化完成');
+}
+
+// 初始化示例数据
+function initSampleData() {
+    // 如果已有数据，不再初始化
+    if (orders.length > 0) {
+        return;
+    }
+    
+    // 创建一些示例订单用于演示
+    const sampleOrders = [
+        {
+            orderNumber: 'WZG20251229001',
+            customerName: '张三',
+            customerPhone: '13800138000',
+            customerAddress: '北京市朝阳区xxx街道xxx号',
+            productName: '无线蓝牙耳机',
+            quantity: 2,
+            price: 199.00,
+            totalAmount: 398.00,
+            expressCompany: '顺丰速运',
+            remark: '尽快发货',
+            status: 'unprinted',
+            createTime: '2025/12/29 10:30:00'
+        },
+        {
+            orderNumber: 'WZG20251229002',
+            customerName: '李四',
+            customerPhone: '13900139000',
+            customerAddress: '上海市浦东新区xxx路xxx号',
+            productName: '智能手环',
+            quantity: 1,
+            price: 299.00,
+            totalAmount: 299.00,
+            expressCompany: '中通快递',
+            remark: '',
+            status: 'shipped',
+            createTime: '2025/12/29 09:15:00'
+        },
+        {
+            orderNumber: 'WZG20251229003',
+            customerName: '王五',
+            customerPhone: '13700137000',
+            customerAddress: '广州市天河区xxx大道xxx号',
+            productName: '机械键盘',
+            quantity: 1,
+            price: 599.00,
+            totalAmount: 599.00,
+            expressCompany: '圆通速递',
+            remark: '需要开发票',
+            status: 'completed',
+            createTime: '2025/12/28 16:20:00'
+        },
+        {
+            orderNumber: 'WZG20251229004',
+            customerName: '赵六',
+            customerPhone: '13600136000',
+            customerAddress: '深圳市南山区xxx街xxx号',
+            productName: '无线鼠标',
+            quantity: 3,
+            price: 89.00,
+            totalAmount: 267.00,
+            expressCompany: '韵达快递',
+            remark: '',
+            status: 'unpaid',
+            createTime: '2025/12/29 11:00:00'
+        }
+    ];
+    
+    orders = sampleOrders;
+    localStorage.setItem('orders', JSON.stringify(orders));
 }
 
 // 绑定事件
@@ -313,6 +390,50 @@ function deleteOrder(orderNumber) {
         
         loadOrders();
         alert('订单已删除！');
+    }
+}
+
+// 更新统计数据
+function updateStats() {
+    // 统计各状态订单数量
+    const stats = {
+        unprinted: 0,
+        unshipped: 0,
+        unpaid: 0,
+        shipped: 0,
+        completed: 0,
+        cancelled: 0,
+        total: orders.length
+    };
+    
+    orders.forEach(order => {
+        if (order.status in stats) {
+            stats[order.status]++;
+        }
+    });
+    
+    // 更新页面显示
+    const updateElement = (id, value) => {
+        const element = document.getElementById(id);
+        if (element) {
+            element.textContent = value;
+        }
+    };
+    
+    updateElement('stat-unprinted', stats.unprinted);
+    updateElement('stat-unshipped', stats.unshipped);
+    updateElement('stat-unpaid', stats.unpaid);
+    updateElement('stat-shipped', stats.shipped);
+    updateElement('stat-completed', stats.completed);
+    updateElement('stat-cancelled', stats.cancelled);
+    updateElement('stat-total', stats.total);
+}
+
+// 刷新图表和统计数据（供其他函数调用）
+function refreshChartAndStats() {
+    updateStats();
+    if (typeof updateChart === 'function') {
+        updateChart();
     }
 }
 

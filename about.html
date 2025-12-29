@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -82,85 +81,97 @@
 </head>
 
 <body>
-    <div class="about-container">
-        <div class="about-header">
-            <h1>微掌柜 - 打单发货管理前端界面</h1>
-            <p>Web前端课程设计作业</p>
+    <!-- 左侧导航栏 -->
+    <nav class="sidebar">
+        <div class="logo">
+            <div class="logo-icon">W</div>
+            <div class="logo-text">微掌柜</div>
         </div>
+        
+        <ul class="nav-menu">
+            <li class="nav-item" onclick="window.location.href='index.html'">
+                <span class="nav-icon">🏠</span>
+                <span class="nav-text">首页</span>
+            </li>
+            <li class="nav-item" onclick="window.location.href='create-order.html'">
+                <span class="nav-icon">📝</span>
+                <span class="nav-text">创建订单</span>
+            </li>
+            <li class="nav-item" onclick="window.location.href='order-list.html'">
+                <span class="nav-icon">📋</span>
+                <span class="nav-text">订单列表</span>
+            </li>
+            <li class="nav-item" onclick="window.location.href='authorization.html'">
+                <span class="nav-icon">⚙️</span>
+                <span class="nav-text">电商授权</span>
+            </li>
+            <li class="nav-item" onclick="window.location.href='waybill.html'">
+                <span class="nav-icon">🧾</span>
+                <span class="nav-text">电子面单</span>
+            </li>
+            <li class="nav-item active">
+                <span class="nav-icon">👤</span>
+                <span class="nav-text">关于</span>
+            </li>
+        </ul>
+    </nav>
 
-        <div class="info-section">
-            <h2>学生信息</h2>
-            <div class="info-grid">
-                <div class="info-item">
-                    <strong>姓名：</strong>张陈星
-                </div>
-                <div class="info-item">
-                    <strong>学号：</strong>202352340107
-                </div>
-                <div class="info-item">
-                    <strong>学院：</strong>软件学院
-                </div>
-                <div class="info-item">
-                    <strong>班级：</strong>软件工程1班
-                </div>
+    <!-- 主内容区域 -->
+    <main class="main-content">
+        <div class="about-container">
+            <div class="about-header">
+                <h1>微掌柜 - 打单发货管理前端界面</h1>
+                <p>Web前端课程设计作业</p>
+            </div>
 
-                <div class="info-item">
-                    <strong>联系电话：</strong>15837104049
+            <div class="info-section">
+                <h2>学生信息</h2>
+                <div class="info-grid">
+                    <div class="info-item">
+                        <strong>姓名：</strong>张陈星
+                    </div>
+                    <div class="info-item">
+                        <strong>学号：</strong>202352340107
+                    </div>
+                    <div class="info-item">
+                        <strong>学院：</strong>软件学院
+                    </div>
+                    <div class="info-item">
+                        <strong>班级：</strong>软件工程1班
+                    </div>
+                    <div class="info-item">
+                        <strong>联系电话：</strong>15837104049
+                    </div>
                 </div>
+            </div>
 
+            <div class="info-section">
+                <h2>项目说明</h2>
+                <div class="info-grid" style="grid-template-columns: 1fr;">
+                    <div class="info-item">
+                        <strong>项目名称：</strong>微掌柜打单发货管理系统
+                    </div>
+                    <div class="info-item">
+                        <strong>完成时间：</strong>2025年12月
+                    </div>
+                    <div class="info-item">
+                        <strong>技术栈：</strong>HTML5 + CSS3 + JavaScript 
+                    </div>
+                    <div class="info-item">
+                        <strong>项目描述：</strong>本系统是一个物流打单发货管理平台，实现了数据统计、订单趋势可视化、常用功能快速访问等功能。使用纯原生Web技术开发，不依赖第三方库。
+                    </div>
+                    <div class="info-item">
+                        <strong>Billycraft203@github.com
+                            <a href= 'https://github.com/Billycraft203/web.git'> https://github.com/Billycraft203/web.git </a>
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div style="text-align: center;">
+                <a href="index.html" class="back-btn">← 返回主页</a>
             </div>
         </div>
-
-        <div class="info-section">
-            <h2>项目说明</h2>
-            <div class="info-grid" style="grid-template-columns: 1fr;">
-                <div class="info-item">
-                    <strong>项目名称：</strong>微掌柜打单发货管理系统
-                </div>
-                <div class="info-item">
-                    <strong>完成时间：</strong>2025年12月
-                </div>
-                <div class="info-item">
-                    <strong>技术栈：</strong>HTML5 + CSS3 + JavaScript 
-                </div>
-                <div class="info-item">
-                    <strong>项目描述：</strong>本系统是一个物流打单发货管理平台，实现了数据统计、订单趋势可视化、常用功能快速访问等功能。使用纯原生Web技术开发，不依赖第三方库。
-                </div>
-            </div>
-        </div>
-
-        <div style="text-align: center;">
-            <a href="index.html" class="back-btn">← 返回主页</a>
-        </div>
-    </div>
+    </main>
 </body>
-
-</html>
-        <div class="skill-level" style="width: 75%"></div>
-    </div>
-</div>
-</div>
-</section>
-
-
-</div>
-
-<div class="about-footer">
-    <div class="qrcode">
-        <div class="qrcode-placeholder">📱</div>
-        <p>扫描查看项目</p>
-    </div>
-
-</div>
-</div>
-</main>
-
-<script>
-    // 返回首页
-    function goBack() {
-        window.location.href = 'index.html';
-    }
-</script>
-</body>
-
 </html>

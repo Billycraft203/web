@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>电商授权 - 微掌柜</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- 左侧导航栏 -->
+    <nav class="sidebar">
+        <div class="logo">
+            <div class="logo-icon">W</div>
+            <div class="logo-text">微掌柜</div>
+        </div>
+        
+        <ul class="nav-menu">
+            <li class="nav-item" onclick="window.location.href='index.html'">
+                <span class="nav-icon">🏠</span>
+                <span class="nav-text">首页</span>
+            </li>
+            <li class="nav-item" onclick="window.location.href='create-order.html'">
+                <span class="nav-icon">📝</span>
+                <span class="nav-text">创建订单</span>
+            </li>
+            <li class="nav-item" onclick="window.location.href='order-list.html'">
+                <span class="nav-icon">📋</span>
+                <span class="nav-text">订单列表</span>
+            </li>
+            <li class="nav-item active">
+                <span class="nav-icon">⚙️</span>
+                <span class="nav-text">电商授权</span>
+            </li>
+            <li class="nav-item" onclick="window.location.href='waybill.html'">
+                <span class="nav-icon">🧾</span>
+                <span class="nav-text">电子面单</span>
+            </li>
+            <li class="nav-item" onclick="window.location.href='about.html'">
+                <span class="nav-icon">👤</span>
+                <span class="nav-text">关于</span>
+            </li>
+        </ul>
+    </nav>
+
+    <!-- 主内容区域 -->
+    <main class="main-content">
+        <div class="section-title">电商授权管理</div>
+        
+        <div class="page-container">
+            <div class="auth-intro">
+                <p>通过授权电商平台账号，可以自动同步订单信息，提高工作效率。</p>
+            </div>
+
+            <div class="platform-grid">
+                <div class="platform-card">
+                    <div class="platform-icon" style="background: #ff6b9d;">
+                        <span>淘</span>
+                    </div>
+                    <div class="platform-info">
+                        <h3>淘宝/天猫</h3>
+                        <p class="platform-status unauthorized">未授权</p>
+                    </div>
+                    <button class="btn btn-primary" onclick="authorizePlatform('taobao')">立即授权</button>
+                </div>
+
+                <div class="platform-card">
+                    <div class="platform-icon" style="background: #e93323;">
+                        <span>京</span>
+                    </div>
+                    <div class="platform-info">
+                        <h3>京东</h3>
+                        <p class="platform-status unauthorized">未授权</p>
+                    </div>
+                    <button class="btn btn-primary" onclick="authorizePlatform('jd')">立即授权</button>
+                </div>
+
+                <div class="platform-card">
+                    <div class="platform-icon" style="background: #ff6034;">
+                        <span>拼</span>
+                    </div>
+                    <div class="platform-info">
+                        <h3>拼多多</h3>
+                        <p class="platform-status unauthorized">未授权</p>
+                    </div>
+                    <button class="btn btn-primary" onclick="authorizePlatform('pdd')">立即授权</button>
+                </div>
+
+                <div class="platform-card">
+                    <div class="platform-icon" style="background: #ff4142;">
+                        <span>抖</span>
+                    </div>
+                    <div class="platform-info">
+                        <h3>抖音小店</h3>
+                        <p class="platform-status unauthorized">未授权</p>
+                    </div>
+                    <button class="btn btn-primary" onclick="authorizePlatform('douyin')">立即授权</button>
+                </div>
+
+                <div class="platform-card">
+                    <div class="platform-icon" style="background: #1bd4c3;">
+                        <span>快</span>
+                    </div>
+                    <div class="platform-info">
+                        <h3>快手小店</h3>
+                        <p class="platform-status unauthorized">未授权</p>
+                    </div>
+                    <button class="btn btn-primary" onclick="authorizePlatform('kuaishou')">立即授权</button>
+                </div>
+
+                <div class="platform-card">
+                    <div class="platform-icon" style="background: #07c160;">
+                        <span>微</span>
+                    </div>
+                    <div class="platform-info">
+                        <h3>微信小商店</h3>
+                        <p class="platform-status unauthorized">未授权</p>
+                    </div>
+                    <button class="btn btn-primary" onclick="authorizePlatform('wechat')">立即授权</button>
+                </div>
+            </div>
+
+            <div class="auth-note">
+                <h4>授权说明：</h4>
+                <ul>
+                    <li>授权后系统会自动同步店铺订单信息</li>
+                    <li>所有数据都经过加密处理，确保账号安全</li>
+                    <li>您可以随时在此页面取消授权</li>
+                </ul>
+            </div>
+        </div>
+    </main>
+
+    <script src="js/main.js"></script>
+    <script>
+        function authorizePlatform(platform) {
+            alert('正在跳转到' + platform + '授权页面...\n\n此为演示功能，实际使用需要对接各平台API');
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>电子面单 - 微掌柜</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- 左侧导航栏 -->
+    <nav class="sidebar">
+        <div class="logo">
+            <div class="logo-icon">W</div>
+            <div class="logo-text">微掌柜</div>
+        </div>
+        
+        <ul class="nav-menu">
+            <li class="nav-item" onclick="window.location.href='index.html'">
+                <span class="nav-icon">🏠</span>
+                <span class="nav-text">首页</span>
+            </li>
+            <li class="nav-item" onclick="window.location.href='create-order.html'">
+                <span class="nav-icon">📝</span>
+                <span class="nav-text">创建订单</span>
+            </li>
+            <li class="nav-item" onclick="window.location.href='order-list.html'">
+                <span class="nav-icon">📋</span>
+                <span class="nav-text">订单列表</span>
+            </li>
+            <li class="nav-item" onclick="window.location.href='authorization.html'">
+                <span class="nav-icon">⚙️</span>
+                <span class="nav-text">电商授权</span>
+            </li>
+            <li class="nav-item active">
+                <span class="nav-icon">🧾</span>
+                <span class="nav-text">电子面单</span>
+            </li>
+            <li class="nav-item" onclick="window.location.href='about.html'">
+                <span class="nav-icon">👤</span>
+                <span class="nav-text">关于</span>
+            </li>
+        </ul>
+    </nav>
+
+    <!-- 主内容区域 -->
+    <main class="main-content">
+        <div class="section-title">电子面单管理</div>
+        
+        <div class="page-container">
+            <div class="waybill-stats">
+                <div class="stat-card">
+                    <div class="stat-value">0</div>
+                    <div class="stat-label">今日打印</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">0</div>
+                    <div class="stat-label">本月打印</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">0</div>
+                    <div class="stat-label">剩余面单</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">未充值</div>
+                    <div class="stat-label">账户余额</div>
+                </div>
+            </div>
+
+            <div class="waybill-actions">
+                <button class="btn btn-primary" onclick="printWaybill()">
+                    <span>🖨️</span> 打印面单
+                </button>
+                <button class="btn btn-secondary" onclick="batchPrint()">
+                    <span>📦</span> 批量打印
+                </button>
+                <button class="btn btn-secondary" onclick="rechargeWaybill()">
+                    <span>💰</span> 充值面单
+                </button>
+                <button class="btn btn-secondary" onclick="printerSettings()">
+                    <span>⚙️</span> 打印设置
+                </button>
+            </div>
+
+            <div class="express-list">
+                <h3>支持的快递公司</h3>
+                <div class="express-grid">
+                    <div class="express-item">
+                        <div class="express-logo">SF</div>
+                        <div class="express-name">顺丰速运</div>
+                        <div class="express-status">已配置</div>
+                    </div>
+                    <div class="express-item">
+                        <div class="express-logo">YTO</div>
+                        <div class="express-name">圆通速递</div>
+                        <div class="express-status">已配置</div>
+                    </div>
+                    <div class="express-item">
+                        <div class="express-logo">ZTO</div>
+                        <div class="express-name">中通快递</div>
+                        <div class="express-status">已配置</div>
+                    </div>
+                    <div class="express-item">
+                        <div class="express-logo">STO</div>
+                        <div class="express-name">申通快递</div>
+                        <div class="express-status">已配置</div>
+                    </div>
+                    <div class="express-item">
+                        <div class="express-logo">YD</div>
+                        <div class="express-name">韵达快递</div>
+                        <div class="express-status">已配置</div>
+                    </div>
+                    <div class="express-item">
+                        <div class="express-logo">EMS</div>
+                        <div class="express-name">邮政EMS</div>
+                        <div class="express-status">已配置</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="waybill-note">
+                <h4>电子面单说明：</h4>
+                <ul>
+                    <li>使用电子面单需要先与快递公司签约并充值</li>
+                    <li>支持热敏打印机和普通打印机</li>
+                    <li>可以批量打印面单，提高发货效率</li>
+                    <li>打印前请确保打印机连接正常</li>
+                    <li>建议使用标准面单纸张规格（100mm × 100mm）</li>
+                </ul>
+            </div>
+        </div>
+    </main>
+
+    <script src="js/main.js"></script>
+    <script>
+        function printWaybill() {
+            alert('正在打开打印面单窗口...\n\n此为演示功能，实际使用需要连接打印机和快递公司API');
+        }
+
+        function batchPrint() {
+            alert('正在打开批量打印窗口...\n\n此为演示功能，可以选择多个订单批量打印面单');
+        }
+
+        function rechargeWaybill() {
+            alert('正在跳转到充值页面...\n\n此为演示功能，实际使用需要对接支付系统');
+        }
+
+        function printerSettings() {
+            alert('正在打开打印设置...\n\n此为演示功能，可以设置打印机参数、面单模板等');
+        }
+    </script>
+</body>
+</html>

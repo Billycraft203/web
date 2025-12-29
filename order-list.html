@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>订单列表 - 微掌柜</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- 左侧导航栏 -->
+    <nav class="sidebar">
+        <div class="logo">
+            <div class="logo-icon">W</div>
+            <div class="logo-text">微掌柜</div>
+        </div>
+        
+        <ul class="nav-menu">
+            <li class="nav-item" onclick="window.location.href='index.html'">
+                <span class="nav-icon">🏠</span>
+                <span class="nav-text">首页</span>
+            </li>
+            <li class="nav-item" onclick="window.location.href='create-order.html'">
+                <span class="nav-icon">📝</span>
+                <span class="nav-text">创建订单</span>
+            </li>
+            <li class="nav-item active">
+                <span class="nav-icon">📋</span>
+                <span class="nav-text">订单列表</span>
+            </li>
+            <li class="nav-item" onclick="window.location.href='authorization.html'">
+                <span class="nav-icon">⚙️</span>
+                <span class="nav-text">电商授权</span>
+            </li>
+            <li class="nav-item" onclick="window.location.href='waybill.html'">
+                <span class="nav-icon">🧾</span>
+                <span class="nav-text">电子面单</span>
+            </li>
+            <li class="nav-item" onclick="window.location.href='about.html'">
+                <span class="nav-icon">👤</span>
+                <span class="nav-text">关于</span>
+            </li>
+        </ul>
+    </nav>
+
+    <!-- 主内容区域 -->
+    <main class="main-content">
+        <div class="section-title">订单列表</div>
+        
+        <div class="page-container">
+            <div class="order-filter">
+                <input type="text" id="orderSearchInput" placeholder="搜索订单号、收货人、电话..." class="search-input">
+                <select id="orderStatusFilter" class="status-filter">
+                    <option value="all">全部状态</option>
+                    <option value="unpaid">未支付</option>
+                    <option value="unprinted">未打印</option>
+                    <option value="unshipped">未发货</option>
+                    <option value="shipped">运输中</option>
+                    <option value="completed">已完成</option>
+                    <option value="cancelled">已取消</option>
+                </select>
+                <button class="btn btn-filter" onclick="filterOrders()">筛选</button>
+            </div>
+            
+            <div class="order-table-container">
+                <table class="order-table">
+                    <thead>
+                        <tr>
+                            <th>订单号</th>
+                            <th>收货人</th>
+                            <th>联系电话</th>
+                            <th>商品名称</th>
+                            <th>数量</th>
+                            <th>金额</th>
+                            <th>状态</th>
+                            <th>创建时间</th>
+                            <th>操作</th>
+                        </tr>
+                    </thead>
+                    <tbody id="orderTableBody">
+                        <!-- 订单数据将通过JS动态生成 -->
+                    </tbody>
+                </table>
+            </div>
+            
+            <div class="no-data" id="noOrderData" style="display: none;">
+                <div class="no-data-icon">📦</div>
+                <div class="no-data-text">暂无订单数据</div>
+            </div>
+        </div>
+    </main>
+
+    <script src="js/main.js"></script>
+    <script>
+        // 页面加载完成后自动执行订单查询
+        document.addEventListener('DOMContentLoaded', function() {
+            // 从localStorage加载订单数据
+            const orders = JSON.parse(localStorage.getItem('orders')) || [];
+            
+            // 自动执行全部状态的查询
+            if (typeof loadOrders === 'function') {
+                loadOrders(orders);
+            }
+        });
+    </script>
+</body>
+</html>
